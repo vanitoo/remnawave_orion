@@ -6,17 +6,54 @@
 <meta name="theme-color" content="#10151f">
 <title>Warp Private Network — подключение</title>
 <style>
-:root{color-scheme:dark;--bg:#10151f;--card:#171e2a;--border:#283244;--text:#f8fafc;--muted:#aeb8c7;--accent:#39d0e5}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at top right,#16323a 0,#10151f 40%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.card{width:min(100%,460px);background:rgba(23,30,42,.96);border:1px solid var(--border);border-radius:22px;padding:26px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.28)}.logo{font-size:42px;margin-bottom:8px}h1{font-size:23px;margin:0 0 8px}p{color:var(--muted);line-height:1.5;margin:0 0 18px}.btn{display:flex;width:100%;align-items:center;justify-content:center;text-decoration:none;border:0;border-radius:14px;padding:15px 18px;font-size:17px;font-weight:750;cursor:pointer;background:linear-gradient(135deg,#28bed4,#54d9e8);color:#071014}.hint{font-size:13px;margin-top:14px;color:var(--muted)}.error{color:#fca5a5}
+:root{color-scheme:dark;--bg:#0c1119;--card:#141c27;--border:#263244;--text:#f8fafc;--muted:#aeb8c7;--accent:#39d0e5;--accent2:#70efff;--ok:#2dd4bf}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:20px;overflow:hidden;background:
+radial-gradient(circle at 50% 18%,rgba(57,208,229,.18),transparent 28%),
+radial-gradient(circle at 85% 0,rgba(57,208,229,.08),transparent 34%),
+linear-gradient(180deg,#0e141d 0%,#0a0f16 100%);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.scene{position:relative;width:min(100%,460px)}
+.glow{position:absolute;inset:-90px;pointer-events:none;background:radial-gradient(circle,rgba(57,208,229,.08),transparent 62%);filter:blur(8px)}
+.card{position:relative;z-index:2;width:100%;background:rgba(20,28,39,.9);border:1px solid var(--border);border-radius:24px;padding:30px 26px 26px;text-align:center;box-shadow:0 24px 80px rgba(0,0,0,.38);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.warp{position:relative;width:132px;height:132px;margin:2px auto 18px;display:grid;place-items:center}
+.ring{position:absolute;border:2px solid rgba(57,208,229,.38);border-radius:50%;inset:18px;animation:pulse 1.45s ease-out infinite}
+.ring.r2{inset:5px;animation-delay:.22s;opacity:.65}
+.ring.r3{inset:-8px;animation-delay:.44s;opacity:.4}
+.core{position:relative;z-index:2;width:78px;height:78px;border-radius:24px;display:grid;place-items:center;font-size:40px;background:linear-gradient(145deg,#172330,#0d151e);border:1px solid rgba(112,239,255,.32);box-shadow:0 0 0 1px rgba(255,255,255,.02),0 0 38px rgba(57,208,229,.22);animation:float 2.4s ease-in-out infinite}
+.spark{position:absolute;width:5px;height:5px;border-radius:50%;background:var(--accent2);box-shadow:0 0 14px var(--accent2);opacity:.8;animation:orbit 2.8s linear infinite;transform-origin:66px 66px;left:64px;top:64px}
+.spark.s2{animation-duration:3.8s;animation-direction:reverse;opacity:.45}
+.spark.s3{animation-duration:2.2s;animation-delay:-.8s;opacity:.6}
+h1{font-size:24px;margin:0 0 8px;letter-spacing:-.02em}
+p{color:var(--muted);line-height:1.5;margin:0 0 18px;font-size:15px}
+.status{display:inline-flex;align-items:center;gap:8px;padding:7px 11px;margin-bottom:17px;border-radius:999px;background:rgba(45,212,191,.08);border:1px solid rgba(45,212,191,.16);color:#8ef3df;font-size:13px;font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 12px var(--ok);animation:blink 1.15s ease-in-out infinite}
+.btn{display:flex;width:100%;align-items:center;justify-content:center;text-decoration:none;border:0;border-radius:14px;padding:15px 18px;font-size:17px;font-weight:800;cursor:pointer;background:linear-gradient(135deg,#28bed4,#65dfec);color:#071014;box-shadow:0 10px 28px rgba(57,208,229,.16);transition:.18s transform,.18s box-shadow}
+.btn:active{transform:scale(.985)}
+.hint{font-size:13px;margin-top:14px;color:var(--muted)}
+.error{color:#fca5a5}
+@keyframes pulse{0%{transform:scale(.72);opacity:.78}75%,100%{transform:scale(1.2);opacity:0}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes orbit{from{transform:rotate(0deg) translateX(66px) rotate(0deg)}to{transform:rotate(360deg) translateX(66px) rotate(-360deg)}}
+@keyframes blink{0%,100%{opacity:.45}50%{opacity:1}}
+@media(max-width:480px){.card{padding:25px 18px 22px;border-radius:20px}.warp{width:118px;height:118px}.spark{left:57px;top:57px;transform-origin:59px 59px}@keyframes orbit{from{transform:rotate(0deg) translateX(59px) rotate(0deg)}to{transform:rotate(360deg) translateX(59px) rotate(-360deg)}}}
+@media(prefers-reduced-motion:reduce){.ring,.core,.spark,.dot{animation:none}}
 </style>
 </head>
 <body>
-<div class="card">
-  <div class="logo">🐾</div>
-  <h1>Warp Private Network</h1>
-  <p id="message">Открываем Happ и добавляем VPN…</p>
-  <a id="openButton" class="btn" href="#" hidden>⚡ Открыть Happ</a>
-  <div class="hint" id="hint">Если приложение не открылось автоматически, нажмите кнопку.</div>
+<div class="scene">
+  <div class="glow"></div>
+  <div class="card">
+    <div class="warp" aria-hidden="true">
+      <div class="ring"></div><div class="ring r2"></div><div class="ring r3"></div>
+      <div class="spark"></div><div class="spark s2"></div><div class="spark s3"></div>
+      <div class="core">🐾</div>
+    </div>
+    <div class="status"><span class="dot"></span><span>Подключаем Warp</span></div>
+    <h1>Открываем Happ</h1>
+    <p id="message">Сейчас приложение откроется и предложит добавить ваш VPN.</p>
+    <a id="openButton" class="btn" href="#" hidden>⚡ Открыть Happ</a>
+    <div class="hint" id="hint">Если Happ не открылся автоматически, нажмите кнопку.</div>
+  </div>
 </div>
 <script>
 (function(){
@@ -26,7 +63,7 @@
   const button=document.getElementById('openButton');
   const hint=document.getElementById('hint');
 
-  // Эта страница предназначена только для безопасного перехода в Happ.
+  // Только безопасные deep-link переходы в Happ.
   if(!target || !/^happ:\/\//i.test(target)){
     message.textContent='Некорректная ссылка подключения.';
     message.classList.add('error');
@@ -37,10 +74,12 @@
   button.href=target;
   button.hidden=false;
 
-  // Небольшая задержка даёт браузеру отрисовать страницу перед deep-link переходом.
-  setTimeout(function(){
-    try{ location.href=target; }catch(e){ console.error(e); }
-  },180);
+  // Почти мгновенный запуск после первой отрисовки анимации.
+  requestAnimationFrame(function(){
+    setTimeout(function(){
+      try{ location.href=target; }catch(e){ console.error(e); }
+    },420);
+  });
 })();
 </script>
 </body>
