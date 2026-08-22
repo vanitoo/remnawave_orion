@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<title><%= metaTitle %></title>
+<style>
+:root{--bg:#10151f;--card:#171e2a;--border:#283244;--text:#f8fafc;--muted:#aeb8c7;--accent:#39d0e5;--ok:#24c58a;--danger:#ef4444}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#16323a 0,#10151f 36%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}.wrap{max-width:680px;margin:0 auto;padding:22px 16px 40px}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 22px}.brand-badge{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#111827;border:1px solid var(--border);font-size:24px}.brand h1{font-size:24px;margin:0}.brand p{margin:3px 0 0;color:var(--muted)}.card{background:rgba(23,30,42,.94);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 12px 40px rgba(0,0,0,.18)}.status{display:flex;align-items:center;gap:12px}.dot{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(36,197,138,.14);color:var(--ok);font-size:22px}.status-title{font-size:18px;font-weight:750}.muted{color:var(--muted)}.hero h2{font-size:28px;line-height:1.15;margin:0 0 10px}.hero p{margin:0;color:var(--muted);font-size:16px}.step{display:flex;gap:14px}.num{flex:0 0 32px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(57,208,229,.14);color:var(--accent);font-weight:800}.step h3{margin:1px 0 7px;font-size:19px}.step p{margin:0 0 14px;color:var(--muted)}.btn{width:100%;border:0;border-radius:14px;padding:15px 18px;font-size:17px;font-weight:750;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px}.primary{background:linear-gradient(135deg,#28bed4,#54d9e8);color:#071014}.secondary{background:#202938;color:var(--text);border:1px solid #334055}.ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}.small{font-size:13px;text-align:center;color:var(--muted);margin:14px 4px 0}.hidden{display:none}.advanced summary{cursor:pointer;font-weight:700}.advanced .content{padding-top:14px}.raw{word-break:break-all;background:#0d121b;border:1px solid var(--border);border-radius:12px;padding:12px;color:#cbd5e1;font-size:12px}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,90px);opacity:0;background:#f8fafc;color:#111827;padding:10px 16px;border-radius:999px;transition:.25s}.toast.show{transform:translate(-50%,0);opacity:1}@media(max-width:480px){.wrap{padding:15px 12px 30px}.hero h2{font-size:24px}.card{padding:17px;border-radius:17px}.brand h1{font-size:21px}}
+</style>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+<div class="wrap">
+  <div class="brand"><div class="brand-badge">🐾</div><div><h1>Warp Private Network</h1><p>Простое подключение VPN</p></div></div>
+  <div id="content"></div>
+</div>
+<div class="toast" id="toast">Ссылка скопирована</div>
+<script>
+const REDIRECT_BASE='https://legiz-ru.github.io/Orion/redirect-page/?redirect_to=';
+let data=null;
+try{data=JSON.parse(atob('<%= panelData %>'));}catch(e){console.error(e)}
+const r=data?.response||{};
+const user=r.user||{};
+const sub=r.subscriptionUrl||'';
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function detect(){const ua=navigator.userAgent||'';if(/Android/i.test(ua))return'android';if(/iPhone|iPad|iPod/i.test(ua))return'ios';if(/Windows/i.test(ua))return'windows';if(/Macintosh|Mac OS X/i.test(ua))return'macos';return'other'}
+function happLink(){return sub?'happ://add/'+sub:''}
+function directUrl(){const d=happLink();return d?REDIRECT_BASE+encodeURIComponent(d):'#'}
+function installUrl(){const os=detect();if(os==='android')return'https://play.google.com/store/apps/details?id=com.happproxy';if(os==='ios')return'https://apps.apple.com/us/app/happ-proxy-utility/id6504287215';return'https://happ.info/ru/'}
+function openUrl(url){if(!url||url==='#')return;try{if(window.Telegram?.WebApp?.openLink){window.Telegram.WebApp.openLink(url)}else{window.location.href=url}}catch(e){window.location.href=url}}
+async function copySub(){if(!sub)return;await navigator.clipboard.writeText(sub);const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function expiry(){const raw=user.expiresAt||user.expireAt||'';if(!raw)return'';const d=new Date(raw);return Number.isNaN(d.getTime())?raw:d.toLocaleDateString('ru-RU',{day:'2-digit',month:'long',year:'numeric'})}
+function render(){const c=document.getElementById('content');if(!r.isFound||!sub){c.innerHTML='<div class="card"><b>Подписка не найдена</b><p class="muted">Вернитесь в Telegram-бот и обновите доступ.</p></div>';return}const exp=expiry();c.innerHTML=`
+<div class="card status"><div class="dot">✓</div><div><div class="status-title">VPN активен</div><div class="muted">${exp?'До '+esc(exp):'Подписка готова'}</div></div></div>
+<div class="card hero"><h2>Подключение за 2 шага</h2><p>Не нужно копировать конфиги или разбираться в настройках вручную.</p></div>
+<div class="card step"><div class="num">1</div><div style="flex:1"><h3>Установите Happ</h3><p>Если Happ уже установлен — сразу переходите ко второму шагу.</p><button class="btn secondary" onclick="openUrl(installUrl())">📥 Установить Happ</button></div></div>
+<div class="card step"><div class="num">2</div><div style="flex:1"><h3>Добавьте VPN</h3><p>Нажмите кнопку ниже. Телефон откроет Happ и предложит добавить вашу подписку.</p><button class="btn primary" onclick="openUrl(directUrl())">⚡ Добавить VPN в Happ</button><div class="small">Если появится системное окно «Открыть ссылку?» — нажмите «Открыть».</div></div></div>
+<details class="card advanced"><summary>Не получилось / другое приложение</summary><div class="content"><p class="muted">Скопируйте ссылку подписки и импортируйте её вручную в совместимое приложение.</p><div class="raw">${esc(sub)}</div><button class="btn ghost" onclick="copySub()">📋 Скопировать ссылку</button></div></details>`}
+render();
+</script>
+</body>
+</html>
