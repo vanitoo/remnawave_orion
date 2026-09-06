@@ -6,136 +6,66 @@
 <meta name="theme-color" content="#ffffff">
 <title><%= metaTitle %></title>
 <style>
-:root{
-  --bg:#ffffff;
-  --ink:#18243c;
-  --muted:#667085;
-  --line:#e6ebf2;
-  --soft:#f4f8fb;
-  --accent:#14b8a6;
-  --accent2:#0891b2;
-  --ok:#16a34a;
-  --shadow:0 14px 42px rgba(24,36,60,.10);
-}
-*{box-sizing:border-box}
-html{background:var(--bg)}
-body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
-button,a{font:inherit}
-a{color:inherit}
-.page{width:min(100%,760px);margin:0 auto;padding:34px 24px 48px}
-.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:2px 0 40px}
-.brand-mark{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:25px;box-shadow:0 10px 24px rgba(8,145,178,.22)}
-.brand-name{font-size:25px;font-weight:800;letter-spacing:-.02em}
-.status-pill{display:inline-flex;align-items:center;gap:9px;min-height:38px;padding:0 15px;border:1px solid var(--line);border-radius:999px;color:var(--ok);font-size:15px;font-weight:650;background:#fff;box-shadow:0 6px 18px rgba(24,36,60,.04)}
-.status-dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 5px rgba(22,163,74,.08)}
-.hero{margin-top:20px}
-.hero h1{margin:0;font-size:clamp(38px,8vw,60px);line-height:1.03;letter-spacing:-.045em}
-.hero p{margin:16px 0 0;color:var(--muted);font-size:18px;line-height:1.55}
-.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
-.action{min-height:64px;border:0;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 20px;font-size:18px;font-weight:750;text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
-.action:active{transform:scale(.985)}
-.action-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 14px 30px rgba(8,145,178,.20)}
-.action-secondary{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
-.status-line{min-height:22px;margin:12px 4px 0;color:var(--muted);font-size:14px}
-.section{margin-top:34px}
-.section h2{margin:0 0 12px;font-size:21px}
-.download-card{border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);overflow:hidden;padding:0 18px}
-.download-row{min-height:72px;display:grid;grid-template-columns:44px minmax(0,1fr) 22px;align-items:center;gap:14px;text-decoration:none;font-size:16px;font-weight:650}
-.download-row+.download-row{border-top:1px solid var(--line)}
-.download-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--soft);font-size:20px}
-.chev{color:#778197;font-size:24px;line-height:1}
-.benefits{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.benefit{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start}
-.benefit-icon{font-size:24px}
-.benefit strong{display:block;font-size:15px}
-.benefit span{display:block;margin-top:4px;color:var(--muted);font-size:13px;line-height:1.4}
-.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);opacity:0;background:#18243c;color:#fff;padding:11px 16px;border-radius:999px;transition:.2s;z-index:20;white-space:nowrap}
-.toast.show{transform:translate(-50%,0);opacity:1}
-.error{margin-top:32px;padding:22px;border:1px solid #fecaca;border-radius:18px;background:#fff7f7;color:#991b1b}
-@media(max-width:640px){
-  .page{padding:max(22px,env(safe-area-inset-top)) 18px max(34px,env(safe-area-inset-bottom))}
-  .brand{margin-bottom:32px}.brand-name{font-size:22px}.hero h1{font-size:44px}.hero p{font-size:16px}
-  .actions{grid-template-columns:1fr}.action{min-height:60px}
-  .benefits{grid-template-columns:1fr;gap:14px}.download-row{min-height:68px}
-}
+:root{--bg:#fff;--ink:#101a35;--muted:#667085;--line:#e5eaf2;--blue:#1f7aff;--blue2:#0c63ef;--green:#18b67c;--shadow:0 12px 34px rgba(29,48,84,.09)}
+*{box-sizing:border-box}html{background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -10%,#eef6ff 0,#fff 29%),#fff;color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}button,a{font:inherit}a{color:inherit}.page{width:min(100%,860px);margin:0 auto;padding:28px 22px 48px}.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:24px}.brand-mark{font-size:46px;font-weight:950;line-height:.8;letter-spacing:-.16em;padding-right:.14em;background:linear-gradient(145deg,#62a7ff 0,#1476ff 55%,#0a55d7 100%);-webkit-background-clip:text;background-clip:text;color:transparent;transform:skewX(-8deg)}.brand-copy{line-height:1}.brand-name{font-size:31px;font-weight:850;letter-spacing:-.03em}.brand-sub{margin-top:5px;color:#506083;font-size:14px;font-weight:650}.center{text-align:center}.status-pill{display:inline-flex;align-items:center;gap:9px;min-height:34px;padding:0 14px;border-radius:999px;background:#e9fbf5;color:#10a66f;font-size:15px;font-weight:750}.status-dot{width:9px;height:9px;border-radius:50%;background:#18b67c;box-shadow:0 0 0 4px rgba(24,182,124,.10)}.hero{margin-top:18px}.hero h1{margin:0;font-size:clamp(38px,7vw,58px);line-height:1.04;letter-spacing:-.045em}.hero p{margin:10px 0 0;color:#617093;font-size:18px}.actions{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}.action-wrap{text-align:center}.action{width:100%;min-height:88px;border-radius:15px;display:grid;grid-template-columns:58px 1fr 24px;align-items:center;gap:14px;padding:0 20px;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:20px;font-weight:800;text-align:left;cursor:pointer;box-shadow:var(--shadow);transition:.16s}.action:active{transform:scale(.985)}.action-primary{background:linear-gradient(135deg,#2180ff,#1267ef);border-color:#1267ef;color:#fff;box-shadow:0 16px 32px rgba(31,122,255,.24)}.action-note{margin-top:8px;color:#667085;font-size:13px}.app-badge{width:52px;height:52px;border-radius:13px;display:grid;place-items:center;overflow:hidden}.app-happ{background:#101a35}.app-happ span{font-size:31px;font-weight:900;background:linear-gradient(180deg,#15d9d4,#8b5cff 55%,#ff4f92);-webkit-background-clip:text;background-clip:text;color:transparent}.app-incy{background:#111b34}.app-incy span{font-size:31px;background:linear-gradient(145deg,#16d3d1,#7e63ff 55%,#ff4e9d);-webkit-background-clip:text;background-clip:text;color:transparent}.arrow{font-size:34px;font-weight:300;line-height:1}.status-line{min-height:20px;margin:10px 0 0;color:var(--muted);font-size:13px;text-align:center}.section{margin-top:30px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:10px}.section h2{margin:0;font-size:24px;letter-spacing:-.02em}.official{color:#0d69f5;font-size:13px;white-space:nowrap}.download-card{border:1px solid var(--line);border-radius:13px;background:#fff;box-shadow:var(--shadow);overflow:hidden;padding:0 18px}.download-row{min-height:70px;display:grid;grid-template-columns:52px minmax(0,1fr) 24px;align-items:center;gap:14px;text-decoration:none}.download-row+.download-row{border-top:1px solid var(--line)}.download-icon{width:44px;height:44px;display:grid;place-items:center}.download-icon svg{width:38px;height:38px;display:block}.download-copy strong{display:block;font-size:16px}.download-copy small{display:block;margin-top:3px;color:#657392;font-size:13px;font-weight:500}.chev{color:#52617f;font-size:28px;line-height:1}.benefits{margin-top:34px;padding:26px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.benefit{display:grid;grid-template-columns:42px 1fr;gap:12px;align-items:start}.benefit-icon{font-size:30px}.benefit strong{display:block;font-size:15px}.benefit span{display:block;margin-top:4px;color:var(--muted);font-size:13px;line-height:1.4}.footer{text-align:center;color:#74809a;font-size:12px;line-height:1.6;margin-top:20px}.error{margin-top:30px;padding:22px;border:1px solid #fecaca;border-radius:16px;background:#fff7f7;color:#991b1b}.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);opacity:0;background:#101a35;color:#fff;padding:11px 16px;border-radius:999px;transition:.2s;z-index:20;white-space:nowrap}.toast.show{transform:translate(-50%,0);opacity:1}@media(max-width:680px){.page{padding:max(22px,env(safe-area-inset-top)) 16px max(34px,env(safe-area-inset-bottom))}.brand-mark{font-size:39px}.brand-name{font-size:25px}.hero h1{font-size:42px}.hero p{font-size:16px}.actions{grid-template-columns:1fr;gap:12px}.action{min-height:76px}.action-note{display:none}.section{margin-top:26px}.section h2{font-size:21px}.official{font-size:11px}.download-card{padding:0 14px}.download-row{grid-template-columns:46px minmax(0,1fr) 20px;gap:11px;min-height:67px}.download-icon{width:40px;height:40px}.download-icon svg{width:34px;height:34px}.download-copy strong{font-size:15px}.download-copy small{font-size:12px}.benefits{grid-template-columns:1fr;gap:14px}}
 </style>
 </head>
 <body>
 <main class="page">
-  <div class="brand">
-    <div class="brand-mark">🐾</div>
-    <div class="brand-name">Warp Private Network</div>
-  </div>
+  <div class="brand"><div class="brand-mark">W</div><div><div class="brand-name">Warp</div><div class="brand-sub">Private Network</div></div></div>
   <div id="app"></div>
 </main>
 <div id="toast" class="toast">Ссылка скопирована</div>
 <script>
-let data=null;
-try{data=JSON.parse(atob('<%= panelData %>'));}catch(e){console.error(e)}
-const response=data?.response||{};
-const user=response.user||{};
-const sub=response.subscriptionUrl||'';
-
+let data=null;try{data=JSON.parse(atob('<%= panelData %>'));}catch(e){console.error(e)}
+const response=data?.response||{};const user=response.user||{};const sub=response.subscriptionUrl||'';
 const DOWNLOADS={
-  macos:'https://github.com/Happ-proxy/happ-desktop/releases/latest',
-  windows:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe',
-  ios:'https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6788279553',
-  android:'https://play.google.com/store/apps/details?id=com.happproxy',
-  androidTv:'https://play.google.com/store/apps/details?id=com.happproxy',
-  deb:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.deb',
-  rpm:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.rpm',
-  arch:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.pkg.tar.zst'
+  happ:{macos:'https://github.com/Happ-proxy/happ-desktop/releases/latest',windows:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe',ios:'https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6788279553',android:'https://play.google.com/store/apps/details?id=com.happproxy',androidTv:'https://play.google.com/store/apps/details?id=com.happproxy',deb:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.deb',rpm:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.rpm',arch:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.pkg.tar.zst'},
+  incy:{ios:'https://apps.apple.com/us/app/incy/id6756943388',android:'https://play.google.com/store/apps/details?id=llc.itdev.incy'}
 };
-
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
 function happUrl(){return sub?'happ://add/'+sub:''}
+function incySource(){if(!sub)return'';return sub+(sub.includes('?')?'&':'?')+'format=incy-json'}
+function incyUrl(){const src=incySource();return src?'incy://import/'+encodeURIComponent(src):''}
 function expiry(){const raw=user.expiresAt||user.expireAt||'';if(!raw)return'';const d=new Date(raw);return Number.isNaN(d.getTime())?raw:d.toLocaleDateString('ru-RU',{day:'2-digit',month:'long',year:'numeric'})}
-function openHapp(){const status=document.getElementById('openStatus');if(status)status.textContent='Пытаемся открыть Happ…';const url=happUrl();if(url)window.location.href=url}
-async function copySubscription(){if(!sub)return;try{await navigator.clipboard.writeText(sub)}catch(e){const ta=document.createElement('textarea');ta.value=sub;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
-
-function render(){
-  const app=document.getElementById('app');
-  if(!response.isFound||!sub){
-    app.innerHTML='<div class="error"><b>Подписка не найдена</b><br><br>Вернитесь в Telegram-бот и обновите доступ.</div>';
-    return;
-  }
-  const exp=expiry();
-  app.innerHTML=`
-    <div class="status-pill"><span class="status-dot"></span>Подписка активна${exp?' до '+esc(exp):''}</div>
-    <section class="hero">
-      <h1>Подключите VPN</h1>
-      <p>Если Happ уже установлен — откройте подписку одной кнопкой. Если приложения нет, скачайте нужную версию ниже.</p>
-      <div class="actions">
-        <button id="happActionButton" class="action action-primary" type="button">⚡ Открыть в Happ</button>
-        <button id="copyActionButton" class="action action-secondary" type="button">📋 Скопировать ссылку</button>
-      </div>
-      <div id="openStatus" class="status-line"></div>
-    </section>
-
-    <section class="section">
-      <h2>Скачать Happ</h2>
-      <div class="download-card">
-        <a class="download-row" href="${DOWNLOADS.macos}" rel="noopener noreferrer"><span class="download-icon">💻</span><span>Happ для macOS</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.windows}" rel="noopener noreferrer"><span class="download-icon">⊞</span><span>Happ для Windows</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.ios}" rel="noopener noreferrer"><span class="download-icon"></span><span>Happ в App Store</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.android}" rel="noopener noreferrer"><span class="download-icon">▶</span><span>Happ в Google Play</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.androidTv}" rel="noopener noreferrer"><span class="download-icon">📺</span><span>Happ для Android TV</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.deb}" rel="noopener noreferrer"><span class="download-icon">🐧</span><span>Happ Linux .deb</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.rpm}" rel="noopener noreferrer"><span class="download-icon">🐧</span><span>Happ Linux .rpm</span><span class="chev">›</span></a>
-        <a class="download-row" href="${DOWNLOADS.arch}" rel="noopener noreferrer"><span class="download-icon">🐧</span><span>Happ Linux pkg</span><span class="chev">›</span></a>
-      </div>
-    </section>
-
-    <section class="benefits" aria-label="Преимущества Warp Private Network">
-      <div class="benefit"><div class="benefit-icon">🛡️</div><div><strong>Безопасно</strong><span>Защищённое подключение и шифрование трафика</span></div></div>
-      <div class="benefit"><div class="benefit-icon">🔒</div><div><strong>Приватно</strong><span>Минимум действий и никаких ручных конфигов</span></div></div>
-      <div class="benefit"><div class="benefit-icon">⚡</div><div><strong>Быстро</strong><span>Подключение к VPN в одно нажатие</span></div></div>
-    </section>
-    <noscript><p class="status-line">JavaScript выключен. Скопируйте ссылку подписки вручную: ${esc(sub)}</p></noscript>
-  `;
-  document.getElementById('happActionButton')?.addEventListener('click',openHapp);
-  document.getElementById('copyActionButton')?.addEventListener('click',copySubscription);
-}
+function setStatus(text){const el=document.getElementById('openStatus');if(el)el.textContent=text}
+function openHapp(){setStatus('Пытаемся открыть Happ…');const url=happUrl();if(url)window.location.href=url}
+function openIncy(){setStatus('Пытаемся открыть Incy…');const url=incyUrl();if(url)window.location.href=url}
+function icon(type){const icons={
+mac:'<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#303746" d="M31.4 25.7c0-5 4.1-7.4 4.3-7.5-2.3-3.4-5.9-3.8-7.2-3.9-3-.3-6 1.8-7.5 1.8-1.6 0-4-1.8-6.5-1.7-3.4.1-6.5 2-8.2 5-3.5 6-.9 14.9 2.5 19.8 1.7 2.4 3.6 5 6.2 4.9 2.5-.1 3.5-1.6 6.5-1.6 3.1 0 3.9 1.6 6.6 1.5 2.7 0 4.4-2.4 6-4.9 1.9-2.8 2.7-5.5 2.8-5.6-.1 0-5.5-2.1-5.5-7.8ZM26.5 11c1.4-1.7 2.4-4.1 2.1-6.5-2.1.1-4.7 1.4-6.2 3.1-1.3 1.5-2.5 4-2.2 6.3 2.4.2 4.8-1.2 6.3-2.9Z"/></svg>',
+win:'<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#00ADEF" d="M4 8.5 21.5 6v17H4V8.5Zm19.6-2.8L44 2.8V23H23.6V5.7ZM4 25h17.5v17L4 39.5V25Zm19.6 0H44v20.2l-20.4-2.9V25Z"/></svg>',
+appstore:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="3" y="3" width="42" height="42" rx="11" fill="#27A8F8"/><path d="M17 33 28 14M14 27h21M20 18l12 20" stroke="#fff" stroke-width="3.2" stroke-linecap="round"/></svg>',
+play:'<svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#34A853" d="M7 5.5v37l20-18.5L7 5.5Z"/><path fill="#4285F4" d="m7 5.5 24.5 13.8L27 24 7 5.5Z"/><path fill="#FBBC04" d="M27 24 31.5 28.7 7 42.5 27 24Z"/><path fill="#EA4335" d="m31.5 19.3 7.8 4.4c1 .6 1 1.2 0 1.8l-7.8 4.4L27 24l4.5-4.7Z"/></svg>',
+tv:'<svg viewBox="0 0 48 48" aria-hidden="true"><rect x="5" y="11" width="38" height="27" rx="6" fill="#55C65A"/><path d="M19 16h10M17 9l-4-4m18 4 4-4" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/><circle cx="17" cy="24" r="2" fill="#fff"/><circle cx="31" cy="24" r="2" fill="#fff"/><path d="M18 31h12" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/></svg>',
+ubuntu:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="18" fill="#E95420"/><circle cx="24" cy="24" r="8" fill="none" stroke="#fff" stroke-width="4"/><circle cx="24" cy="5.5" r="3.2" fill="#fff"/><circle cx="8" cy="33" r="3.2" fill="#fff"/><circle cx="40" cy="33" r="3.2" fill="#fff"/></svg>',
+fedora:'<svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="20" fill="#3C6EB4"/><path d="M29 12c-7 0-12 5-12 12v3h-4v6h4v3c0 3 2 5 5 5 4 0 7-3 7-7V24h5v-6h-5v-1c0-2 1-3 3-3h2v-2h-5Z" fill="#fff"/></svg>',
+tux:'<svg viewBox="0 0 48 48" aria-hidden="true"><ellipse cx="24" cy="28" rx="14" ry="15" fill="#1D2433"/><ellipse cx="24" cy="30" rx="9" ry="11" fill="#fff"/><ellipse cx="19" cy="16" rx="5" ry="7" fill="#fff"/><ellipse cx="29" cy="16" rx="5" ry="7" fill="#fff"/><circle cx="20" cy="17" r="1.5"/><circle cx="28" cy="17" r="1.5"/><path d="m18 21 6-5 6 5-6 4-6-4Z" fill="#F6B632"/><path d="M11 40 19 36l-2 7H9l2-3Zm26 0-8-4 2 7h8l-2-3Z" fill="#F6B632"/></svg>'};return icons[type]||''}
+function row(url,type,title,subtext){return `<a class="download-row" href="${url}" rel="noopener noreferrer"><span class="download-icon">${icon(type)}</span><span class="download-copy"><strong>${title}</strong>${subtext?`<small>${subtext}</small>`:''}</span><span class="chev">›</span></a>`}
+function render(){const app=document.getElementById('app');if(!response.isFound||!sub){app.innerHTML='<div class="error"><b>Подписка не найдена</b><br><br>Вернитесь в Telegram-бот и обновите доступ.</div>';return}const exp=expiry();app.innerHTML=`
+<div class="center"><div class="status-pill"><span class="status-dot"></span>Подписка активна${exp?' до '+esc(exp):''}</div></div>
+<section class="hero center"><h1>Выберите приложение</h1><p>В каком приложении добавить подписку?</p></section>
+<div class="actions">
+  <div class="action-wrap"><button id="happActionButton" class="action action-primary" type="button"><span class="app-badge app-happ"><span>≋</span></span><span>Открыть в Happ</span><span class="arrow">›</span></button><div class="action-note">Рекомендуемое приложение</div></div>
+  <div class="action-wrap"><button id="incyActionButton" class="action" type="button"><span class="app-badge app-incy"><span>▶</span></span><span>Открыть в Incy</span><span class="arrow">›</span></button><div class="action-note">Альтернативное приложение</div></div>
+</div><div id="openStatus" class="status-line"></div>
+<section class="section"><div class="section-head"><h2>Скачать Happ</h2><span class="official">Официальные источники ✓</span></div><div class="download-card">
+${row(DOWNLOADS.happ.macos,'mac','Скачать Happ для macOS','Для Mac с чипами Intel и Apple Silicon')}
+${row(DOWNLOADS.happ.windows,'win','Скачать Happ для Windows','Установщик для Windows 10 и 11')}
+${row(DOWNLOADS.happ.ios,'appstore','Скачать Happ в App Store','Для iPhone и iPad')}
+${row(DOWNLOADS.happ.android,'play','Скачать Happ в Google Play','Для Android')}
+${row(DOWNLOADS.happ.androidTv,'tv','Скачать Happ для Android TV','Для телевизоров и приставок')}
+${row(DOWNLOADS.happ.deb,'ubuntu','Скачать Happ Linux .deb','Для Ubuntu, Debian и других')}
+${row(DOWNLOADS.happ.rpm,'fedora','Скачать Happ Linux .rpm','Для Fedora, CentOS, RHEL и других')}
+${row(DOWNLOADS.happ.arch,'tux','Скачать Happ Linux pkg','Для Arch Linux и совместимых')}
+</div></section>
+<section class="section"><div class="section-head"><h2>Скачать Incy</h2><span class="official">Официальные источники ✓</span></div><div class="download-card">
+${row(DOWNLOADS.incy.ios,'appstore','Скачать Incy в App Store','Для iPhone и iPad')}
+${row(DOWNLOADS.incy.android,'play','Скачать Incy в Google Play','Для Android')}
+</div></section>
+<section class="benefits"><div class="benefit"><div class="benefit-icon">🛡️</div><div><strong>Безопасно</strong><span>Защищённое подключение и шифрование трафика</span></div></div><div class="benefit"><div class="benefit-icon">🔒</div><div><strong>Приватно</strong><span>Минимум действий и никаких ручных конфигов</span></div></div><div class="benefit"><div class="benefit-icon">⚡</div><div><strong>Быстро</strong><span>Подключение к VPN в одно нажатие</span></div></div></section>
+<div class="footer">Warp Private Network<br>Свобода. Приватность. Без границ.</div>
+<noscript><p class="status-line">JavaScript выключен. Используйте ссылку подписки вручную: ${esc(sub)}</p></noscript>`;
+document.getElementById('happActionButton')?.addEventListener('click',openHapp);document.getElementById('incyActionButton')?.addEventListener('click',openIncy)}
 render();
 </script>
 </body>
