@@ -3,41 +3,139 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#111827">
+<meta name="theme-color" content="#ffffff">
 <title><%= metaTitle %></title>
 <style>
-:root{--bg:#10151f;--card:#171e2a;--border:#283244;--text:#f8fafc;--muted:#aeb8c7;--accent:#39d0e5;--ok:#24c58a;--danger:#ef4444}
-*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#16323a 0,#10151f 36%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;min-height:100vh}.wrap{max-width:680px;margin:0 auto;padding:22px 16px 40px}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 22px}.brand-badge{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#111827;border:1px solid var(--border);font-size:24px}.brand h1{font-size:24px;margin:0}.brand p{margin:3px 0 0;color:var(--muted)}.card{background:rgba(23,30,42,.94);border:1px solid var(--border);border-radius:20px;padding:20px;margin-bottom:16px;box-shadow:0 12px 40px rgba(0,0,0,.18)}.status{display:flex;align-items:center;gap:12px}.dot{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:rgba(36,197,138,.14);color:var(--ok);font-size:22px}.status-title{font-size:18px;font-weight:750}.muted{color:var(--muted)}.hero h2{font-size:28px;line-height:1.15;margin:0 0 10px}.hero p{margin:0;color:var(--muted);font-size:16px}.step{display:flex;gap:14px}.num{flex:0 0 32px;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(57,208,229,.14);color:var(--accent);font-weight:800}.step h3{margin:1px 0 7px;font-size:19px}.step p{margin:0 0 14px;color:var(--muted)}.btn{width:100%;border:0;border-radius:14px;padding:15px 18px;font-size:17px;font-weight:750;cursor:pointer;text-decoration:none;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px}.primary{background:linear-gradient(135deg,#28bed4,#54d9e8);color:#071014}.secondary{background:#202938;color:var(--text);border:1px solid #334055}.ghost{background:transparent;color:var(--muted);border:1px solid var(--border)}.small{font-size:13px;text-align:center;color:var(--muted);margin:14px 4px 0}.hidden{display:none}.advanced summary{cursor:pointer;font-weight:700}.advanced .content{padding-top:14px}.raw{word-break:break-all;background:#0d121b;border:1px solid var(--border);border-radius:12px;padding:12px;color:#cbd5e1;font-size:12px}.toast{position:fixed;left:50%;bottom:20px;transform:translate(-50%,90px);opacity:0;background:#f8fafc;color:#111827;padding:10px 16px;border-radius:999px;transition:.25s}.toast.show{transform:translate(-50%,0);opacity:1}@media(max-width:480px){.wrap{padding:15px 12px 30px}.hero h2{font-size:24px}.card{padding:17px;border-radius:17px}.brand h1{font-size:21px}}
+:root{
+  --bg:#ffffff;
+  --ink:#18243c;
+  --muted:#667085;
+  --line:#e6ebf2;
+  --soft:#f4f8fb;
+  --accent:#14b8a6;
+  --accent2:#0891b2;
+  --ok:#16a34a;
+  --shadow:0 14px 42px rgba(24,36,60,.10);
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased}
+button,a{font:inherit}
+a{color:inherit}
+.page{width:min(100%,760px);margin:0 auto;padding:34px 24px 48px}
+.brand{display:flex;align-items:center;justify-content:center;gap:12px;margin:2px 0 40px}
+.brand-mark{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:25px;box-shadow:0 10px 24px rgba(8,145,178,.22)}
+.brand-name{font-size:25px;font-weight:800;letter-spacing:-.02em}
+.status-pill{display:inline-flex;align-items:center;gap:9px;min-height:38px;padding:0 15px;border:1px solid var(--line);border-radius:999px;color:var(--ok);font-size:15px;font-weight:650;background:#fff;box-shadow:0 6px 18px rgba(24,36,60,.04)}
+.status-dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 5px rgba(22,163,74,.08)}
+.hero{margin-top:20px}
+.hero h1{margin:0;font-size:clamp(38px,8vw,60px);line-height:1.03;letter-spacing:-.045em}
+.hero p{margin:16px 0 0;color:var(--muted);font-size:18px;line-height:1.55}
+.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px}
+.action{min-height:64px;border:0;border-radius:16px;display:flex;align-items:center;justify-content:center;gap:10px;padding:0 20px;font-size:18px;font-weight:750;text-decoration:none;cursor:pointer;transition:transform .15s ease,box-shadow .15s ease}
+.action:active{transform:scale(.985)}
+.action-primary{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;box-shadow:0 14px 30px rgba(8,145,178,.20)}
+.action-secondary{background:#fff;color:var(--ink);border:1px solid var(--line);box-shadow:var(--shadow)}
+.status-line{min-height:22px;margin:12px 4px 0;color:var(--muted);font-size:14px}
+.section{margin-top:34px}
+.section h2{margin:0 0 12px;font-size:21px}
+.download-card{border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);overflow:hidden;padding:0 18px}
+.download-row{min-height:72px;display:grid;grid-template-columns:44px minmax(0,1fr) 22px;align-items:center;gap:14px;text-decoration:none;font-size:16px;font-weight:650}
+.download-row+.download-row{border-top:1px solid var(--line)}
+.download-icon{width:38px;height:38px;border-radius:11px;display:grid;place-items:center;background:var(--soft);font-size:20px}
+.chev{color:#778197;font-size:24px;line-height:1}
+.benefits{margin-top:34px;padding-top:24px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.benefit{display:grid;grid-template-columns:36px 1fr;gap:10px;align-items:start}
+.benefit-icon{font-size:24px}
+.benefit strong{display:block;font-size:15px}
+.benefit span{display:block;margin-top:4px;color:var(--muted);font-size:13px;line-height:1.4}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,80px);opacity:0;background:#18243c;color:#fff;padding:11px 16px;border-radius:999px;transition:.2s;z-index:20;white-space:nowrap}
+.toast.show{transform:translate(-50%,0);opacity:1}
+.error{margin-top:32px;padding:22px;border:1px solid #fecaca;border-radius:18px;background:#fff7f7;color:#991b1b}
+@media(max-width:640px){
+  .page{padding:max(22px,env(safe-area-inset-top)) 18px max(34px,env(safe-area-inset-bottom))}
+  .brand{margin-bottom:32px}.brand-name{font-size:22px}.hero h1{font-size:44px}.hero p{font-size:16px}
+  .actions{grid-template-columns:1fr}.action{min-height:60px}
+  .benefits{grid-template-columns:1fr;gap:14px}.download-row{min-height:68px}
+}
 </style>
-<script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-<div class="wrap">
-  <div class="brand"><div class="brand-badge">🐾</div><div><h1>Warp Private Network</h1><p>Простое подключение VPN</p></div></div>
-  <div id="content"></div>
-</div>
-<div class="toast" id="toast">Ссылка скопирована</div>
+<main class="page">
+  <div class="brand">
+    <div class="brand-mark">🐾</div>
+    <div class="brand-name">Warp Private Network</div>
+  </div>
+  <div id="app"></div>
+</main>
+<div id="toast" class="toast">Ссылка скопирована</div>
 <script>
-const REDIRECT_BASE='https://ss.6679.ru/redirect?to=';
 let data=null;
 try{data=JSON.parse(atob('<%= panelData %>'));}catch(e){console.error(e)}
-const r=data?.response||{};
-const user=r.user||{};
-const sub=r.subscriptionUrl||'';
+const response=data?.response||{};
+const user=response.user||{};
+const sub=response.subscriptionUrl||'';
+
+const DOWNLOADS={
+  macos:'https://github.com/Happ-proxy/happ-desktop/releases/latest',
+  windows:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/setup-Happ.x64.exe',
+  ios:'https://apps.apple.com/ru/app/happ-proxy-utility-plus/id6788279553',
+  android:'https://play.google.com/store/apps/details?id=com.happproxy',
+  androidTv:'https://play.google.com/store/apps/details?id=com.happproxy',
+  deb:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.deb',
+  rpm:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.rpm',
+  arch:'https://github.com/Happ-proxy/happ-desktop/releases/latest/download/Happ.linux.x64.pkg.tar.zst'
+};
+
 function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
-function detect(){const ua=navigator.userAgent||'';if(/Android/i.test(ua))return'android';if(/iPhone|iPad|iPod/i.test(ua))return'ios';if(/Windows/i.test(ua))return'windows';if(/Macintosh|Mac OS X/i.test(ua))return'macos';return'other'}
-function happLink(){return sub?'happ://add/'+sub:''}
-function directUrl(){const d=happLink();return d?REDIRECT_BASE+encodeURIComponent(d):'#'}
-function installUrl(){const os=detect();if(os==='android')return'https://play.google.com/store/apps/details?id=com.happproxy';if(os==='ios')return'https://apps.apple.com/us/app/happ-proxy-utility/id6504287215';return'https://happ.info/ru/'}
-function openUrl(url){if(!url||url==='#')return;try{if(window.Telegram?.WebApp?.openLink){window.Telegram.WebApp.openLink(url)}else{window.location.href=url}}catch(e){window.location.href=url}}
-async function copySub(){if(!sub)return;await navigator.clipboard.writeText(sub);const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1800)}
+function happUrl(){return sub?'happ://add/'+sub:''}
 function expiry(){const raw=user.expiresAt||user.expireAt||'';if(!raw)return'';const d=new Date(raw);return Number.isNaN(d.getTime())?raw:d.toLocaleDateString('ru-RU',{day:'2-digit',month:'long',year:'numeric'})}
-function render(){const c=document.getElementById('content');if(!r.isFound||!sub){c.innerHTML='<div class="card"><b>Подписка не найдена</b><p class="muted">Вернитесь в Telegram-бот и обновите доступ.</p></div>';return}const exp=expiry();c.innerHTML=`
-<div class="card status"><div class="dot">✓</div><div><div class="status-title">VPN активен</div><div class="muted">${exp?'До '+esc(exp):'Подписка готова'}</div></div></div>
-<div class="card hero"><h2>Подключение за 2 шага</h2><p>Не нужно копировать конфиги или разбираться в настройках вручную.</p></div>
-<div class="card step"><div class="num">1</div><div style="flex:1"><h3>Установите Happ</h3><p>Если Happ уже установлен — сразу переходите ко второму шагу.</p><button class="btn secondary" onclick="openUrl(installUrl())">📥 Установить Happ</button></div></div>
-<div class="card step"><div class="num">2</div><div style="flex:1"><h3>Добавьте VPN</h3><p>Нажмите кнопку ниже. Телефон откроет Happ и предложит добавить вашу подписку.</p><button class="btn primary" onclick="openUrl(directUrl())">⚡ Добавить VPN в Happ</button><div class="small">Если появится системное окно «Открыть ссылку?» — нажмите «Открыть».</div></div></div>
-<details class="card advanced"><summary>Не получилось / другое приложение</summary><div class="content"><p class="muted">Скопируйте ссылку подписки и импортируйте её вручную в совместимое приложение.</p><div class="raw">${esc(sub)}</div><button class="btn ghost" onclick="copySub()">📋 Скопировать ссылку</button></div></details>`}
+function openHapp(){const status=document.getElementById('openStatus');if(status)status.textContent='Пытаемся открыть Happ…';const url=happUrl();if(url)window.location.href=url}
+async function copySubscription(){if(!sub)return;try{await navigator.clipboard.writeText(sub)}catch(e){const ta=document.createElement('textarea');ta.value=sub;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const t=document.getElementById('toast');t.classList.add('show');setTimeout(()=>t.classList.remove('show'),1700)}
+
+function render(){
+  const app=document.getElementById('app');
+  if(!response.isFound||!sub){
+    app.innerHTML='<div class="error"><b>Подписка не найдена</b><br><br>Вернитесь в Telegram-бот и обновите доступ.</div>';
+    return;
+  }
+  const exp=expiry();
+  app.innerHTML=`
+    <div class="status-pill"><span class="status-dot"></span>Подписка активна${exp?' до '+esc(exp):''}</div>
+    <section class="hero">
+      <h1>Подключите VPN</h1>
+      <p>Если Happ уже установлен — откройте подписку одной кнопкой. Если приложения нет, скачайте нужную версию ниже.</p>
+      <div class="actions">
+        <button id="happActionButton" class="action action-primary" type="button">⚡ Открыть в Happ</button>
+        <button id="copyActionButton" class="action action-secondary" type="button">📋 Скопировать ссылку</button>
+      </div>
+      <div id="openStatus" class="status-line"></div>
+    </section>
+
+    <section class="section">
+      <h2>Скачать Happ</h2>
+      <div class="download-card">
+        <a class="download-row" href="${DOWNLOADS.macos}" rel="noopener noreferrer"><span class="download-icon">💻</span><span>Happ для macOS</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.windows}" rel="noopener noreferrer"><span class="download-icon">⊞</span><span>Happ для Windows</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.ios}" rel="noopener noreferrer"><span class="download-icon"></span><span>Happ в App Store</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.android}" rel="noopener noreferrer"><span class="download-icon">▶</span><span>Happ в Google Play</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.androidTv}" rel="noopener noreferrer"><span class="download-icon">📺</span><span>Happ для Android TV</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.deb}" rel="noopener noreferrer"><span class="download-icon">🐧</span><span>Happ Linux .deb</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.rpm}" rel="noopener noreferrer"><span class="download-icon">🐧</span><span>Happ Linux .rpm</span><span class="chev">›</span></a>
+        <a class="download-row" href="${DOWNLOADS.arch}" rel="noopener noreferrer"><span class="download-icon">🐧</span><span>Happ Linux pkg</span><span class="chev">›</span></a>
+      </div>
+    </section>
+
+    <section class="benefits" aria-label="Преимущества Warp Private Network">
+      <div class="benefit"><div class="benefit-icon">🛡️</div><div><strong>Безопасно</strong><span>Защищённое подключение и шифрование трафика</span></div></div>
+      <div class="benefit"><div class="benefit-icon">🔒</div><div><strong>Приватно</strong><span>Минимум действий и никаких ручных конфигов</span></div></div>
+      <div class="benefit"><div class="benefit-icon">⚡</div><div><strong>Быстро</strong><span>Подключение к VPN в одно нажатие</span></div></div>
+    </section>
+    <noscript><p class="status-line">JavaScript выключен. Скопируйте ссылку подписки вручную: ${esc(sub)}</p></noscript>
+  `;
+  document.getElementById('happActionButton')?.addEventListener('click',openHapp);
+  document.getElementById('copyActionButton')?.addEventListener('click',copySubscription);
+}
 render();
 </script>
 </body>
